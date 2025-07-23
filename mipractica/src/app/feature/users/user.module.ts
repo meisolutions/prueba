@@ -1,19 +1,18 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { ProductosService } from './https/product.http';
-import { ProductComponent } from './components/table/table.component';
+import { UserComponent } from './component/user-list/user.list.component';
 
 
 @NgModule({
   declarations: [
     // AppComponent
-    ProductComponent
+    UserComponent
   ],
   imports: [
     BrowserModule,
     // AppRoutingModule
   ],
-  providers: [ProductosService ],
+  providers: [],
   bootstrap: []
 })
-export class ProductModule { }
+export class UserModule { }
