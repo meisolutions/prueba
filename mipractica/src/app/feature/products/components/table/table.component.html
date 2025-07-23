@@ -1,5 +1,5 @@
 <div class="articulos-container">
-  <h2>Lista de Artículos</h2>
+  <h2>Lista de Productos</h2>
   <table class="articulos-table">
     <thead>
       <tr>
@@ -7,14 +7,23 @@
         <th>Nombre</th>
         <th>Descripción</th>
         <th>Precio</th>
+        <th>Categoría</th>
+        <th>Stock</th>
+        <th>Imagen</th>
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let articulo of articulos">
-        <td>{{ articulo.id }}</td>
-        <td>{{ articulo.nombre }}</td>
-        <td>{{ articulo.descripcion }}</td>
-        <td>{{ articulo.precio  }}</td>
+      <tr *ngFor="let producto of articulos">
+        <td>{{ producto.id }}</td>
+        <td>{{ producto.nombre }}</td>
+        <td>{{ producto.descripcion }}</td>
+        <td>{{ producto.precio }}</td>
+        <td>{{ producto.categoria }}</td>
+        <td>{{ producto.stock }}</td>
+        <td>
+          <img *ngIf="producto.imagenUrl" [src]="producto.imagenUrl" alt="Imagen" width="50" />
+        </td>
       </tr>
     </tbody>
   </table>
+</div>

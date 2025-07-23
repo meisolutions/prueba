@@ -7,7 +7,7 @@ import {IProduct } from '../interfaces/product.interface'
   providedIn: 'root'
 })
 export class ProductosService {
-  private apiUrl = 'http://localhost:3000/productos'; // Cambia esto por tu backend real
+  private apiUrl = 'http://localhost:54658/product'; // Cambia esto por tu backend real
 
   constructor(private http: HttpClient) {}
 
