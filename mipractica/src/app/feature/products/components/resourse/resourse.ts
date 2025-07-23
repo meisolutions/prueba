@@ -1,7 +1,4 @@
-import { Component, Inject, OnInit } from "@angular/core";
-import { ProductosService } from "../../https/product.http";
-import { IProduct, IProductList } from "../../interfaces/product.interface";
-import { Subscription } from "rxjs";
+import { Component, OnInit } from "@angular/core";
 import { ResourceService } from "../../https/resourse.http";
 
 @Component({
