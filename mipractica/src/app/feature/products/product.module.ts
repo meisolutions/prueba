@@ -1,19 +1,20 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { CommonModule } from '@angular/common';
 import { ProductosService } from './https/product.http';
-import { ProductComponent } from './components/table/table.component';
-
+import { ProductComponent } from './components/product/product';
+import { ProductTableComponent } from './components/table/table.component';
 
 @NgModule({
   declarations: [
-    // AppComponent
-    ProductComponent
+    ProductComponent,
+    ProductTableComponent
   ],
   imports: [
     BrowserModule,
-    // AppRoutingModule
+    CommonModule
   ],
-  providers: [ProductosService ],
-  bootstrap: []
+  providers: [ProductosService],
+  exports: [ProductComponent]
 })
 export class ProductModule { }

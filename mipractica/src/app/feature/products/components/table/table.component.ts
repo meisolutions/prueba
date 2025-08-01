@@ -1,42 +1,17 @@
-import { Component, Inject, OnInit } from "@angular/core";
-import { ProductosService } from "../../https/product.http";
-import { IProduct, IProductList } from "../../interfaces/product.interface";
-import { Subscription } from "rxjs";
+import { Component, Input, Output, EventEmitter } from "@angular/core";
+import { IProduct } from "../../interfaces/product.interface";
 
 @Component({
-  selector: 'arn-table-product',
-  templateUrl: './table.component.html'
+  selector: 'app-product-table',
+  templateUrl: './table.component.html',
+  styleUrls: ['./table.component.scss']
 })
+export class ProductTableComponent {
+  @Input() productos: IProduct[] = []; // Recibe datos del componente padre
+  @Output() productoSeleccionado = new EventEmitter<IProduct>(); // Emite al padre
 
-export class ProductComponent implements OnInit {
-  articulos: any;
-
-  // _articulosService = Inject(ProductosService);
-  subscription=  new Subscription();
-   // agregar subscription
-   // Destruir subscription
-
-  constructor(
-    // No se puede injectar mas de 5
-    private _productosService: ProductosService
-  ) { }
-
-  ngOnInit(): void {
-    this._productosService.getProducto().subscribe({
-      next: (data) => {
-        this.articulos = data;
-      },
-      error: (err) => {
-        console.error('Error al obtener productos:', err);
-      }
-    });
+  // evento para seleccionar un producto
+  onRowClick(producto: IProduct): void {
+    this.productoSeleccionado.emit(producto);
   }
-
-tradicional(){
-  this._productosService.getProducto().subscribe(data => {
-    console.log(data)
-})
-}
-
-
 }

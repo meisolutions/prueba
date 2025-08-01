@@ -1,1 +1,37 @@
-<!-- <router-outlet></router-outlet> -->
+<div class="product-container">
+  <div class="main-content">
+    <!-- Componente hijo: Tabla de productos -->
+    <div class="table-section">
+      <h2>Lista de Recursos</h2>
+      <app-product-table 
+        [productos]="productos"
+        (productoSeleccionado)="onProductoSeleccionado($event)">
+      </app-product-table>
+    </div>
+
+    <!-- Detalles del producto seleccionado -->
+    <div class="product-details" *ngIf="productoSeleccionado">
+      <h3>Detalles del Producto</h3>
+      <div class="detail-fields">
+        <div class="field">
+          <label>Nombre:</label>
+          <input type="text" [value]="productoSeleccionado.nombre" readonly>
+        </div>
+        <div class="field">
+          <label>Descripción:</label>
+          <input type="text" [value]="productoSeleccionado.descripcion" readonly>
+        </div>
+        <div class="field">
+          <label>Precio:</label>
+          <input type="number" [value]="productoSeleccionado.precio" readonly>
+        </div>
+      </div>
+    </div>
+
+    <!-- Botón para calcular total -->
+    <div class="total-section">
+      <button class="btn-total" (click)="calcularTotal()">Total</button>
+      <input type="number" [value]="total" readonly class="total-input">
+    </div>
+  </div>
+</div>
