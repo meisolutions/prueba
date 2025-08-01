@@ -1,7 +1,8 @@
 import { Component, Inject, OnDestroy, OnInit } from "@angular/core";
 import { ProductosService } from "../../https/product.http";
 import { IProduct, IProductList } from "../../interfaces/product.interface";
-import { Subscription } from "rxjs";
+import { pipe, Subject, Subscription, takeUntil } from "rxjs";
+import { takeUntilDestroyed } from "@angular/core/rxjs-interop";
 
 @Component({
   selector: 'arn-table-product',
@@ -16,8 +17,9 @@ export class ProductComponent implements OnInit, OnDestroy {
  // observable: representa un dato o un flujo y emite el mesaje
  // observador: el que escucha los mensajes 
   subscription=  new Subscription();
-   // agregar subscription
-   // Destruir subscription
+
+   // nuevo
+   subscriptiOnDestroy= new Subject();
 
   constructor(
     // No se puede injectar mas de 5
@@ -32,7 +34,13 @@ export class ProductComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
 
     this.subscription.add(
-      this._productosService.getProducto().subscribe({
+      this._productosService.getProducto()
+      // Nuevo
+      // .pipe(
+      //   takeUntil(this.subscriptiOnDestroy)
+      // )
+      .subscribe(
+      {
       next: (data) => {
         this.articulos = data;
       },
