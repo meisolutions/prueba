@@ -1,0 +1,11 @@
+<div class="resource-container">
+  <div class="resource-layout">
+    <div class="resource-list-section">
+      <app-resource-list (productSelected)="onProductSelected($event)"></app-resource-list>
+    </div>
+    
+    <div class="product-details-section">
+      <app-product-details [selectedProduct]="selectedProduct"></app-product-details>
+    </div>
+  </div>
+</div> 

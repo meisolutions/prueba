@@ -1,0 +1,31 @@
+<div class="resource-list-container">
+  <h2>Lista de Recursos</h2>
+  
+  <table class="resource-table">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>NOMBRE</th>
+        <th>DESCRIPCIÓN</th>
+        <th>PRECIO</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr 
+        *ngFor="let resource of resources" 
+        (click)="onProductSelect(resource)"
+        [class.selected]="selectedProduct?.id === resource.id"
+        class="resource-row">
+        <td>{{ resource.id }}</td>
+        <td>{{ resource.name }}</td>
+        <td>{{ resource.pantone_value }}</td>
+        <td>${{ (resource.year * 100).toFixed(2) }}</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  <div class="total-section">
+    <button class="total-button">Total</button>
+    <div class="total-amount">{{ total.toFixed(2) }}</div>
+  </div>
+</div> 

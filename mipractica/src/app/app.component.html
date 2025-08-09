@@ -1,11 +1,13 @@
-<h1>Mi practica</h1>
-<nav>
-  <ul>
-     <a routerLink="/product" routerLinkActive="active-link" >Product</a>
-     <ul> </ul>
-     <a routerLink="/resourse" routerLinkActive="active-link">resourse</a>
-  </ul>
-</nav>
- 
-<!-- The routed views render in the <router-outlet>-->
-<router-outlet></router-outlet>
+<div class="app-container">
+  <header class="app-header">
+    <h1>Mi practica</h1>
+    <nav class="app-nav">
+      <button class="nav-button" routerLink="/products" routerLinkActive="active">Productos</button>
+      <button class="nav-button" routerLink="/resources" routerLinkActive="active">Recursos</button>
+    </nav>
+  </header>
+
+  <main class="app-main">
+    <router-outlet></router-outlet>
+  </main>
+</div>
