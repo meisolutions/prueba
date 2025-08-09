@@ -1,6 +1,7 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { ResourceData } from '../../interfaces/resource.interface';
 import { ResourceService } from '../../resource.http';
+import { CommonService } from '../../../products/servicios/common.service';
 
 @Component({
   selector: 'app-resource-list',
@@ -15,7 +16,9 @@ export class ResourceListComponent implements OnInit {
   total: number = 0;
   loading: boolean = false;
 
-  constructor(private resourceService: ResourceService) { }
+  constructor(private resourceService: ResourceService,
+    private commonService: CommonService
+  ) { }
 
   ngOnInit(): void {
     this.loadResources();
@@ -64,6 +67,8 @@ export class ResourceListComponent implements OnInit {
   onProductSelect(product: ResourceData): void {
     this.selectedProduct = product;
     this.productSelected.emit(product);
+
+    this.commonService.setProduct(product);
   }
 
   private calculateTotal(): void {

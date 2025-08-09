@@ -15,11 +15,7 @@ import { CommonService } from "../../servicios/common.service";
 export class ProductTableComponent {
   @Input() productos: IProduct[] = []; // Recibe datos del componente padre
   @Output() productoSeleccionado = new EventEmitter<IProduct>(); // Emite al padre
-
-
   articulos: any;
-
-
   // Subscription: Relacion/conexion entre observable y observador
   // observable: representa un dato o un flujo y emite el mesaje
   // observador: el que escucha los mensajes 
@@ -43,7 +39,7 @@ export class ProductTableComponent {
   ngOnInit(): void {
     const data = this.commonService.getProduct();
 
-    console.log('****FData****', data);
+    console.log('****1ra subcripcion****', data);
 
 
     this.subscription.add(
