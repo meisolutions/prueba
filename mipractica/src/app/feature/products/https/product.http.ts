@@ -1,25 +1,23 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import {IProduct } from '../interfaces/product.interface'
+import { IProduct } from '../interfaces/product.interface'
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProductosService {
-  private apiUrl = 'http://localhost:3000/product'; // Cambia esto por tu backend real
+  private apiUrl = 'http://localhost:3000/products';
 
   constructor(private http: HttpClient) {}
 
-    // Lista
+  // Lista
   getProducto(): Observable<IProduct[]> {
     return this.http.get<IProduct[]>(`${this.apiUrl}`);
   }
 
-//   obtiene por Id
+  // obtiene por Id
   getProductoById(id?: string): Observable<IProduct> {
     return this.http.get<IProduct>(`${this.apiUrl}/${id}`);
   }
-
-
 }

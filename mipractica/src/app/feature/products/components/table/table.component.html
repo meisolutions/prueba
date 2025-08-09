@@ -1,6 +1,5 @@
-<div class="articulos-container">
-  <h2>Lista de Productos</h2>
-  <table class="articulos-table">
+<div class="table-container">
+  <table class="product-table">
     <thead>
       <tr>
         <th>ID</th>
@@ -13,17 +12,20 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let producto of articulos">
+      <tr 
+        *ngFor="let producto of productos" 
+        (click)="onRowClick(producto)"
+        class="table-row"
+        [class.selected]="false">
         <td>{{ producto.id }}</td>
         <td>{{ producto.nombre }}</td>
         <td>{{ producto.descripcion }}</td>
-        <td>{{ producto.precio }}</td>
-        <td>{{ producto.categoria }}</td>
-        <td>{{ producto.stock }}</td>
-        <td>
-          <img *ngIf="producto.imagenUrl" [src]="producto.imagenUrl" alt="Imagen" width="50" />
-        </td>
+        <td>{{ producto.precio | currency:'USD':'symbol':'1.2-2' }}</td>
       </tr>
     </tbody>
   </table>
+  
+  <div *ngIf="productos.length === 0" class="no-data">
+    <p>No hay productos disponibles</p>
+  </div>
 </div>

@@ -1,23 +1,24 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { CommonModule } from '@angular/common';
 import { ProductosService } from './https/product.http';
-import { ProductComponent } from './components/table/table.component';
-import { ResourceComponent } from './components/resourse/resourse';
-import { ResourceService } from './https/resourse.http';
-
+import { ProductComponent } from './components/product/product';
+import { ProductTableComponent } from './components/table/table.component';
+import { CommonService } from './servicios/common.service';
+import { DataSelectComponent } from './components/data-select-table/data-select-table.component';
 
 @NgModule({
   declarations: [
-    // AppComponent
-    ProductComponent, 
-    ResourceComponent
+    ProductComponent,
+    ProductTableComponent,
+    DataSelectComponent
   ],
   imports: [
-    BrowserModule, 
-    // AppRoutingModule
+    BrowserModule,
+    CommonModule
   ],
-  providers: [ProductosService, ResourceService], 
-  bootstrap: []
+  providers: [ProductosService, CommonService],
+  exports: [ProductComponent]
 })
 export class ProductModule { }
 
